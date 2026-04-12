@@ -1,0 +1,50 @@
+.site-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 2000;
+}
+
+.navbar-brand {
+    font-family: Brush Script MT, cursive;
+    font-style: italic;
+    font-weight: 600;
+    color: #909090;
+    transition: 0.2s;
+}
+
+.navbar-brand:hover {
+    color: #ffffff;
+}
+
+.contact-footer {
+    background: #131417;
+    color: #e6ecf5;
+}
+
+.contact-footer p {
+    color: #aab5c6;
+}
+
+@keyframes bg-scrolling-reverse {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 50px 50px;
+    }
+}
+
+#main-content {
+    scroll-margin-top: -30px;
+    background-color: #2a2b2d;
+    min-height: 100vh;
+
+    background-image:
+        radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1.5px),
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+
+    animation: bg-scrolling-reverse 5s infinite linear;
+}

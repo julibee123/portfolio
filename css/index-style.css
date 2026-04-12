@@ -1,0 +1,170 @@
+.hero-section {
+    --hero-shift: 0px;
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    background: radial-gradient(circle at 20% 20%, rgba(13, 110, 253, 0.15), transparent 45%),
+        radial-gradient(circle at 80% 75%, rgba(13, 202, 240, 0.2), transparent 50%),
+        linear-gradient(160deg, #f8fbff 0%, #e9f3ff 60%, #ffffff 100%);
+}
+
+.hero-section::before,
+.hero-section::after {
+    content: "";
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(2px);
+    pointer-events: none;
+    transition: transform 80ms linear;
+}
+
+.hero-section::before {
+    width: 380px;
+    height: 380px;
+    top: -140px;
+    right: -120px;
+    background: rgba(13, 110, 253, 0.2);
+    transform: translateY(calc(var(--hero-shift) * 1)) translateX(calc(var(--hero-shift) * -0.5));
+}
+
+.hero-section::after {
+    width: 280px;
+    height: 280px;
+    bottom: -110px;
+    left: -80px;
+    background: rgba(13, 202, 240, 0.22);
+    transform: translateY(calc(var(--hero-shift) * -0.5)) translateX(calc(var(--hero-shift) * 0.2));
+}
+
+.hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(0.4px);
+    animation-name: hero-orb-float;
+    animation-duration: var(--orb-duration, 8s);
+    animation-delay: var(--orb-delay, 0s);
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    
+}
+
+.orb-1 {
+    width: 140px;
+    height: 140px;
+    top: 12%;
+    left: 10%;
+    background: rgba(13, 110, 253, 0.18);
+    --orb-duration: 7.5s;
+    --orb-delay: -1.8s;
+
+}
+
+.orb-2 {
+    width: 90px;
+    height: 90px;
+    top: 22%;
+    right: 18%;
+    background: rgba(13, 202, 240, 0.2);
+    --orb-duration: 9s;
+    --orb-delay: -2.3s;
+}
+
+.orb-3 {
+    width: 70px;
+    height: 70px;
+    top: 58%;
+    left: 18%;
+    background: rgba(25, 135, 84, 0.16);
+    --orb-duration: 8.5s;
+    --orb-delay: -4.2s;
+}
+
+.orb-4 {
+    width: 120px;
+    height: 120px;
+    top: 65%;
+    right: 12%;
+    background: rgba(13, 110, 253, 0.14);
+    --orb-duration: 10s;
+    --orb-delay: -0.9s;
+}
+
+.orb-5 {
+    width: 48px;
+    height: 48px;
+    top: 35%;
+    left: 34%;
+    background: rgba(13, 202, 240, 0.28);
+    --orb-duration: 6.8s;
+    --orb-delay: -3.6s;
+}
+
+.orb-6 {
+    width: 56px;
+    height: 56px;
+    top: 78%;
+    right: 33%;
+    background: rgba(25, 135, 84, 0.2);
+    --orb-duration: 9.6s;
+    --orb-delay: -5.1s;
+}
+
+@keyframes hero-orb-float {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    25% {
+        transform: translate3d(10px, -14px, 0) scale(1.04);
+    }
+    50% {
+        transform: translate3d(-8px, -24px, 0) scale(0.98);
+    }
+    75% {
+        transform: translate3d(-14px, -10px, 0) scale(1.03);
+    }
+    100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.carousel-label {
+    letter-spacing: 0.15em;
+    color: #9cc9ff;
+    opacity: 1;
+    transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.carousel-label.is-updating {
+    opacity: 0.2;
+    transform: translateY(-6px);
+}
+
+#portfolioCarousel {
+    max-width: 880px;
+    margin: 0 auto;
+}
+
+.carousel-panel {
+    min-height: 500px;
+    background: linear-gradient(135deg, #1f2330 0%, #2f384d 100%);
+    color: #f5f7fb;
+}
+
+.carousel-image {
+    min-height: 500px;
+    object-fit: cover;
+}
+
+.carousel-panel p {
+    max-width: 560px;
+    color: #c7cfdb;
+}
