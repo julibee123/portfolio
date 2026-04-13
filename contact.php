@@ -1,6 +1,7 @@
 <?php
 include 'php-txt/basetext.php';
 include 'php-xampp/db.php';
+include 'php-xampp/recaptcha-verify.php';
 
 $success_message = '';
 $error_message = '';
@@ -8,26 +9,31 @@ $name_value = '';
 $email_value = '';
 $message_value = '';
 
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name_value = trim($_POST['name'] ?? '');
-    $email_value = trim($_POST['email'] ?? '');
-    $message_value = trim($_POST['message'] ?? '');
-
-    if ($name_value === '' || $email_value === '' || $message_value === '') {
-        $error_message = 'Please fill in all fields before submitting.';
-    } elseif (!filter_var($email_value, FILTER_VALIDATE_EMAIL)) {
-        $error_message = 'Please enter a valid email address.';
+    if (!verifyRecaptcha()) {
+        $error_message = 'reCAPTCHA verification failed. Please try again.';
     } else {
-        $statement = $db->prepare('INSERT INTO contact_messages (name, email, message) VALUES (?, ?, ?)');
-        $statement->bind_param('sss', $name_value, $email_value, $message_value);
-        $statement->execute();
-        $statement->close();
+        $name_value = trim($_POST['name'] ?? '');
+        $email_value = trim($_POST['email'] ?? '');
+        $message_value = trim($_POST['message'] ?? '');
 
-        header('Location: contact.php?sent=1');
-        exit;
+        if ($name_value === '' || $email_value === '' || $message_value === '') {
+            $error_message = 'Please fill in all fields before submitting.';
+        } elseif (!filter_var($email_value, FILTER_VALIDATE_EMAIL)) {
+            $error_message = 'Please enter a valid email address.';
+        } else {
+            $statement = $db->prepare('INSERT INTO contact_messages (name, email, message) VALUES (?, ?, ?)');
+            $statement->bind_param('sss', $name_value, $email_value, $message_value);
+            $statement->execute();
+            $statement->close();
+
+            header('Location: contact.php?sent=1');
+            exit;
+        }
     }
 }
-
 if (isset($_GET['sent'])) {
     $success_message = 'Thank you for your message. I will get back to you shortly.';
 }
@@ -59,6 +65,14 @@ $btn_send = 'Send Message';
         <link rel="stylesheet" href="css/index-style.css"/>
         <link rel="stylesheet" href="css/base-style.css"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+        <script type="text/javascript">
+            var onloadCallback = function() {
+                grecaptcha.render('captcha_element', {
+                'sitekey' : '6Lcli7QsAAAAANPNrquyZJYCSarS94FeFPMtlyES'
+                });
+            };
+        </script>
     </head>
 
     <body>
@@ -160,6 +174,7 @@ $btn_send = 'Send Message';
                                             required
                                         ><?php echo htmlspecialchars($message_value); ?></textarea>
                                     </div>
+                                    <div id="captcha_element"></div>
                                     <div class="col-12">
                                         <button type="submit" class="btn btn-primary px-4"><?php echo $btn_send; ?></button>
                                     </div>
@@ -199,5 +214,6 @@ $btn_send = 'Send Message';
             crossorigin="anonymous"
         ></script>
         <script src="js/index-script.js"></script>
+        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
     </body>
 </html>

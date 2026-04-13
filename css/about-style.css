@@ -95,6 +95,39 @@
     color: #e6ecf5;
 }
 
+
+.about-skill-list {
+    display: flex;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+
+.about-skill-box {
+    background: linear-gradient(135deg, rgba(156, 201, 255, 0.2) 0%, rgba(255, 255, 255, 0.08) 100%);
+    border: 1px solid rgba(156, 201, 255, 0.35);
+    border-radius: 10px;
+    padding: 1rem 0.85rem;
+    font-size: 0.9rem;
+    color: #e6ecf5;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+.about-skill-box i {
+    color: #9cc9ff;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.about-skill-box:hover {
+    transform: translateY(-1px);
+    background: linear-gradient(135deg, rgba(156, 201, 255, 0.28) 0%, rgba(255, 255, 255, 0.1) 100%);
+    border-color: rgba(156, 201, 255, 0.55);
+}
+
 .about-certifications {
     border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
@@ -106,8 +139,8 @@
 }
 
 .about-badge {
-    width: 10rem;
-    height: 10rem;
+    width: 5rem;
+    height: 5rem;
     border-radius: 0.5rem;
     object-fit: cover;
 }

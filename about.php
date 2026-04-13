@@ -9,7 +9,19 @@ $biography = 'I am Jullian C. Manalo, a second-year BS Computer Science student 
             web development, AI, and software engineering.';
 $skills_label = 'Skills';
 $certification_label = 'Certifications & Badges';
-$skills = ['PHP', 'Java', 'R', 'C#', 'Python', 'HTML', 'CSS', 'JavaScript', 'MySQL', 'Git', 'Bootstrap'];
+$skills = ['PHP', 'Java', 'R', 'C#', 'Python', 'HTML', 'CSS', 'JavaScript', 'Bootstrap', 'SQL'];
+$skill_icons = [
+    'PHP' => 'devicon-php-plain',
+    'Java' => 'devicon-java-plain',
+    'R' => 'devicon-r-plain',
+    'C#' => 'devicon-csharp-plain',
+    'Python' => 'devicon-python-plain',
+    'HTML' => 'devicon-html5-plain',
+    'CSS' => 'devicon-css3-plain',
+    'JavaScript' => 'devicon-javascript-plain',
+    'Bootstrap' => 'devicon-bootstrap-plain',
+    'SQL' => 'devicon-mysql-plain'
+];
 
 
 
@@ -36,6 +48,9 @@ $carousel_slide_1_desc = 'A C#-based inventory management system designed to str
 
     <!-- Bootsrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Devicon --> 
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 </head>
 
 <body>
@@ -90,17 +105,18 @@ $carousel_slide_1_desc = 'A C#-based inventory management system designed to str
                             <?php echo $skills_label; ?>
                         </p>
                         <div class="about-profile-details text-light text-center">
-                            <p>
+                            <div class="about-skill-list">
                                 <?php
                                 foreach ($skills as $index => $skill) {
-                                    echo $skill;
-
-                                    if ($index < count($skills) - 1) {
-                                        echo ', ';
-                                    }
+                                    $icon = $skill_icons[$skill] ?? 'bi-code-slash';
+                                    echo
+                                        '<span class="about-skill-box">' .
+                                        '<i class="' . $icon . '"></i>' .
+                                        '<span>' . htmlspecialchars($skill, ENT_QUOTES, 'UTF-8') . '</span>' .
+                                        '</span>';
                                 }
                                 ?>
-                            </p>
+                            </div>
                         </div>
                     </div>
 
