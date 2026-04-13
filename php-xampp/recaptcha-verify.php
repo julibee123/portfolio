@@ -1,5 +1,9 @@
 <?php
     function verifyRecaptcha() {
+        if (empty($_POST['g-recaptcha-response'])) {
+            return false;
+        }
+
         // Storing google recaptcha response
         // in $recaptcha variable
         $recaptcha = $_POST['g-recaptcha-response'];

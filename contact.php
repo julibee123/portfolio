@@ -9,16 +9,14 @@ $name_value = '';
 $email_value = '';
 $message_value = '';
 
-
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name_value = trim($_POST['name'] ?? '');
+    $email_value = trim($_POST['email'] ?? '');
+    $message_value = trim($_POST['message'] ?? '');
+
     if (!verifyRecaptcha()) {
         $error_message = 'reCAPTCHA verification failed. Please try again.';
     } else {
-        $name_value = trim($_POST['name'] ?? '');
-        $email_value = trim($_POST['email'] ?? '');
-        $message_value = trim($_POST['message'] ?? '');
-
         if ($name_value === '' || $email_value === '' || $message_value === '') {
             $error_message = 'Please fill in all fields before submitting.';
         } elseif (!filter_var($email_value, FILTER_VALIDATE_EMAIL)) {
@@ -40,7 +38,6 @@ if (isset($_GET['sent'])) {
 
 $contact_header_title = 'Contact Me';
 $contact_header_subtitle = 'Send a message, and I will respond as soon as possible.';
-$view_records_label = 'View Contact Records';
 
 $label_name = 'Name';
 $label_email = 'Email';
@@ -130,7 +127,6 @@ $btn_send = 'Send Message';
                                         <h1 class="h3 mb-2"><?php echo $contact_header_title; ?></h1>
                                         <p class="text-secondary mb-0"><?php echo $contact_header_subtitle; ?></p>
                                     </div>
-                                    <a href="login.php" class="btn btn-outline-light"><?php echo $view_records_label; ?></a>
                                 </div>
 
                                 <?php if ($success_message !== ''): ?>

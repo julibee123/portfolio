@@ -125,10 +125,14 @@ $carousel_slide_1_desc = 'A C#-based inventory management system designed to str
                             <?php echo $certification_label; ?>
                         </p>
                         <div class="about-badge-list">
-                            <img src="resources/python_essentials_1.png" alt="Certification badge placeholder 1"
+                            <a href="https://www.credly.com/badges/7411001a-cc70-4061-a353-f581e414258a" target="_blank">
+                            <img src="resources/python_essentials_1.png" alt="Credly badge for Python Essentials 1"
                                 class="about-badge" />
-                            <img src="resources/introduction_to_networks.png" alt="Certification badge placeholder 2"
+                            </a>
+                            <a href="https://www.credly.com/badges/5558f194-e4fc-4e6e-b4dd-d4e2c5e812ed" target="_blank">
+                                <img src="resources/introduction_to_networks.png" alt="Credly badge for Introduction to Networks"
                                 class="about-badge" />
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -164,22 +168,28 @@ $carousel_slide_1_desc = 'A C#-based inventory management system designed to str
                         data-bs-interval="3000">
                         <div class="carousel-inner rounded-4 overflow-hidden shadow">
                             <div class="carousel-item active">
-                                <div
-                                    class="carousel-panel d-flex flex-column justify-content-center align-items-center text-center">
-                                    <img src="resources/WesternEdge.png" class="carousel-image w-100 d-block" />
-                                </div>
+                                <a href="https://github.com/donsirr/wegutters-ims" target="_blank">
+                                    <div
+                                        class="carousel-panel d-flex flex-column justify-content-center align-items-center text-center">
+                                        <img src="resources/WesternEdge.png" class="carousel-image w-100 d-block" />
+                                    </div>
+                                </a>
                             </div>
                             <div class="carousel-item">
-                                <div
-                                    class="carousel-panel d-flex flex-column justify-content-center align-items-center text-center">
-                                    <img src="resources/ForCite.gif" class="carousel-image w-100 d-block" />
-                                </div>
+                                <a href="https://github.com/Aliztaire/GitLit-HackFest" target="_blank">
+                                    <div
+                                        class="carousel-panel d-flex flex-column justify-content-center align-items-center text-center">
+                                        <img src="resources/ForCite.gif" class="carousel-image w-100 d-block" />
+                                    </div>
+                                </a>
                             </div>
                             <div class="carousel-item">
-                                <div
-                                    class="carousel-panel d-flex flex-column justify-content-center align-items-center text-center">
-                                    <img src="resources/AUFLibrary.png" class="carousel-image w-100 d-block" />
-                                </div>
+                                <a href="https://github.com/Atsuwastaken/Library-Booking-System/tree/main22" target="_blank">
+                                    <div
+                                        class="carousel-panel d-flex flex-column justify-content-center align-items-center text-center">
+                                        <img src="resources/AUFLibrary.png" class="carousel-image w-100 d-block" />
+                                    </div>
+                                </a>
                             </div>
                         </div>
 
